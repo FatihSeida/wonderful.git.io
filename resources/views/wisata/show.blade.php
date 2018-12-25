@@ -39,18 +39,12 @@
 					
 					<h2>Penginapan</h2>
 					<table class="table table-bordered table-striped">
+						@foreach($wisata->villa as $villa)
 						<tr>
-							<th>Nama Villa</th>
-							<th>Harga</th>
+							<th>{{ $villa->name }}</th>
+							<th>{{ $villa->price }}</th>
 						</tr>
-						<tr>
-							<td>Cilengkrang</td>
-							<td>2.000.000</td>
-						</tr>
-						<tr>
-							<td>Cipadung</td>
-							<td>1.000.000</td>
-						</tr>
+						@endforeach
 					</table>
 
 					<button data-toggle="modal" data-target="#tambahkanVilla" data-backdrop="false" class="btn btn-warning" style="width: 49%;padding: 10px;">
