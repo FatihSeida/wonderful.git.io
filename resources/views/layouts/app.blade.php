@@ -93,9 +93,9 @@
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right">               
                             <li>
-				                <form class="form-inline" action="#" method="#" role="search">
+				                <form class="form-inline" action="{{ url('/search') }}" method="GET" role="search">
 								    <div class="input-group" style="margin-top: 14px; margin-bottom: 10px;">
-									    <input class="form-control" placeholder="Cari . . ." name="search" id="searchform" type="text">
+									    <input class="form-control" placeholder="Cari . . ." name="q" id="searchform" type="text">
 									    <div class="input-group-btn">
 										    <button type="submit" id="searchbtn"><i class="fa fa-search"></i></button>
 									    </div>

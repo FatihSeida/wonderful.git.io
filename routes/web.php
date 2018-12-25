@@ -29,6 +29,8 @@ Route::post('/rating/{idWisata}', 'WisataController@rating');
 
 Route::post('/rating/villa/{idVilla}', 'VillaController@rating');
 
+Route::get('/search', 'SearchController@search');
+
 Route::get('/{slugWisata}', 'PagesController@showWisata');
 
 Route::get('/{slugWisata}/{slugVilla}', 'PagesController@showVilla');
