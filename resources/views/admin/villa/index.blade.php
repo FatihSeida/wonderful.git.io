@@ -40,7 +40,7 @@
                                     <td>{{ $villa->updated_at }}</td>
                                     <td>
                                         <a href="{{ url('/'.$villa->wisata->slug.'/'.$villa->slug) }}" target="_blank" class="btn btn-info btn-xs waves-effect">View</a>
-                                        <a href="{{ url('admin/wisata/'.$villa->id.'/edit') }}" class="btn btn-success btn-xs waves-effect">Edit</a>
+                                        <a href="{{ url('admin/'.$villa->wisata->id.'/'.$villa->id.'/edit') }}" class="btn btn-success btn-xs waves-effect">Edit</a>
                                         <form action="{{ url('admin/wisata/'.$villa->id) }}" method="POST" style="display: inline;">
                                             {{ csrf_field() }}
                                             {{ method_field('delete') }}

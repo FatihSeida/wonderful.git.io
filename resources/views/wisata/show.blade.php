@@ -36,13 +36,13 @@
                         <button type="submit" form="like" class="like btn btn-success" style="width: 49%; padding: 10px;"><i class="fa fa-thumbs-o-up"></i> Like <span class="likes">{{ $wisata->like }}</span></button>
                         <button type="submit" form="dislike" class="dislike btn btn-danger" style="width: 49%; padding: 10px;"><i class="fa fa-thumbs-o-down"></i> Dislike <span class="dislikes">{{ $wisata->dislike }}</span></button>
                     </div>
-					
+					<br>
 					<h2>Penginapan</h2>
 					<table class="table table-bordered table-striped">
 						@foreach($wisata->villa as $villa)
 						<tr>
-							<th>{{ $villa->name }}</th>
-							<th>{{ $villa->price }}</th>
+							<th><a href="{{ url('/'.$villa->wisata->slug.'/'.$villa->slug) }}">{{ $villa->name }}</a></th>
+							<th><a href="{{ url('/'.$villa->wisata->slug.'/'.$villa->slug) }}">{{ $villa->price }}</a></th>
 						</tr>
 						@endforeach
 					</table>

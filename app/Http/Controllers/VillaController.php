@@ -110,9 +110,11 @@ class VillaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idWisata, $idVilla)
     {
-        //
+        $villa = Villa::where('id', $idVilla)->first();
+
+        return view('admin.villa.edit', compact('villa'));
     }
 
     /**
