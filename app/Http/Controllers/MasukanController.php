@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Masukan;
+use App\Wisata;
 
 class MasukanController extends Controller
 {
@@ -13,7 +15,9 @@ class MasukanController extends Controller
      */
     public function index()
     {
-        //
+        $masukans = Masukan::all();
+
+        return view('admin.masukan.index', compact('masukans'));
     }
 
     /**
@@ -32,9 +36,16 @@ class MasukanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $wisata = Wisata::where('id', $id)->first();
+
+        $wisata->masukan()->create([
+            'text' => $input['masukan']
+        ]);
+
+        return back();
     }
 
     /**
@@ -79,6 +90,8 @@ class MasukanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Masukan::destroy($id);
+
+        return back();
     }
 }

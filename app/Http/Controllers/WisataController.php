@@ -349,15 +349,4 @@ class WisataController extends Controller
 
         return back();
     }
-
-    public function masukan(Request $request, $id) {
-        $input = $request->all();
-        $wisata = Wisata::where('id', $id)->first();
-
-        $wisata->masukan()->create([
-            'text' => $input['masukan']
-        ]);
-
-        return back();
-    }
 }

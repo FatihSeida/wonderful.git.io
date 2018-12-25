@@ -16,12 +16,14 @@ Auth::routes();
 Route::group(["middleware" => "auth"], function(){
 	Route::get('/admin', 'PagesController@admin');
 	Route::resource('/admin/wisata', 'WisataController');	
+	Route::get('/admin/masukan', 'MasukanController@index');
+	Route::delete('/admin/masukan/{idMasukan}', 'MasukanController@destroy');
 	Route::resource('/admin/{idWisata}', 'VillaController', ['parameters' => ['{idWisata}' => 'idWisata1']]);
 });
 
 Route::get('/', 'PagesController@home');
 
-Route::post('/masukan/{idWisata}', 'WisataController@masukan');
+Route::post('/masukan/{idWisata}', 'MasukanController@store');
 
 Route::post('/rating/{idWisata}', 'WisataController@rating');
 
