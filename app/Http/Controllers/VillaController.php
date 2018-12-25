@@ -124,9 +124,71 @@ class VillaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idWisata, $idVilla)
     {
-        //
+        $input = $request->all();
+
+        $villa = Villa::where('id', $idVilla)->first();
+
+        if(isset($input['slug'])) {
+            $slug = $input['slug'];
+        }else{
+            $slug = str_slug($input['name'], '-');
+        }
+
+        $villa->update([
+            'name' => $input['name'],
+            'desc' => $input['desc'],
+            'price' => $input['price'],
+            'address' => $input['address'],
+            'hp' => $input['hp'],
+            'slug' => $slug,
+            'lat' => $input['lat'],
+            'long' => $input['long'],
+        ]);
+
+        if (isset($input['thumbnail'])) {
+            $thumbnail = str_random().'-'.$input['thumbnail']->getClientOriginalName();
+            if (isset($villa->thumbnail)) {
+                unlink(public_path('images/villa/'.$villa->thumbnail));
+            }
+            $villa->update([
+                'thumbnail' => $thumbnail
+            ]);
+            $input['thumbnail']->move(public_path("images/villa/"), $thumbnail);  
+        }
+        if (isset($input['photo1'])) {
+            $photo1 = str_random().'-'.$input['photo1']->getClientOriginalName();
+            if (isset($villa->photo1)) {
+                unlink(public_path('images/villa/'.$villa->photo1));
+            }
+            $villa->update([
+                'photo1' => $photo1
+            ]);
+            $input['photo1']->move(public_path("images/villa/"), $photo1);  
+        }
+        if (isset($input['photo2'])) {
+            $photo2 = str_random().'-'.$input['photo2']->getClientOriginalName();
+            if (isset($villa->photo2)) {
+                unlink(public_path('images/villa/'.$villa->photo2));
+            }
+            $villa->update([
+                'photo2' => $photo2
+            ]);
+            $input['photo2']->move(public_path("images/villa/"), $photo2);  
+        }
+        if (isset($input['photo3'])) {
+            $photo3 = str_random().'-'.$input['photo3']->getClientOriginalName();
+            if (isset($villa->photo3)) {
+                unlink(public_path('images/villa/'.$villa->photo3));
+            }
+            $villa->update([
+                'photo3' => $photo3
+            ]);
+            $input['photo3']->move(public_path("images/villa/"), $photo3);  
+        }
+
+        return redirect('admin/'.$villa->wisata->id);
     }
 
     /**
