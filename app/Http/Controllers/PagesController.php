@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Wisata;
+use App\Villa;
 
 class PagesController extends Controller
 {
@@ -22,5 +23,11 @@ class PagesController extends Controller
     	$wisata = Wisata::where('slug', $slugWisata)->first();
 
     	return view('wisata.show', compact('wisata'));
+    }
+
+    public function showVilla($slugWisata, $slugVilla) {
+        $villa = Villa::where('slug', $slugVilla)->first();
+
+        return view('villa.show', compact('villa'));
     }
 }

@@ -39,8 +39,7 @@
                                     <td>{{ $villa->lat }} , {{ $villa->long }}</td>
                                     <td>{{ $villa->updated_at }}</td>
                                     <td>
-                                        <a href="{{ url('/admin/'.$villa->slug) }}" class="btn btn-primary btn-xs waves-effect">Villa</a>
-                                        <a href="{{ url('/'.$villa->slug) }}" target="_blank" class="btn btn-info btn-xs waves-effect">View</a>
+                                        <a href="{{ url('/'.$villa->wisata->slug.'/'.$villa->slug) }}" target="_blank" class="btn btn-info btn-xs waves-effect">View</a>
                                         <a href="{{ url('admin/wisata/'.$villa->id.'/edit') }}" class="btn btn-success btn-xs waves-effect">Edit</a>
                                         <form action="{{ url('admin/wisata/'.$villa->id) }}" method="POST" style="display: inline;">
                                             {{ csrf_field() }}

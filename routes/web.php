@@ -16,13 +16,17 @@ Auth::routes();
 Route::group(["middleware" => "auth"], function(){
 	Route::get('/admin', 'PagesController@admin');
 	Route::resource('/admin/wisata', 'WisataController');	
-	Route::resource('/admin/{idWisata}', 'VillaController');
+	Route::resource('/admin/{idWisata}', 'VillaController', ['parameters' => ['{idWisata}' => 'idWisata1']]);
 });
 
 Route::get('/', 'PagesController@home');
 
-Route::get('/{slugWisata}', 'PagesController@showWisata');
-
 Route::post('/masukan/{idWisata}', 'WisataController@masukan');
 
 Route::post('/rating/{idWisata}', 'WisataController@rating');
+
+Route::post('/rating/villa/{idVilla}', 'VillaController@rating');
+
+Route::get('/{slugWisata}', 'PagesController@showWisata');
+
+Route::get('/{slugWisata}/{slugVilla}', 'PagesController@showVilla');

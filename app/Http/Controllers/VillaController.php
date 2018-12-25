@@ -137,4 +137,25 @@ class VillaController extends Controller
     {
         //
     }
+
+    public function rating(Request $request, $id) {
+        $input = $request->all();
+
+        $villa = Villa::where('id', $id)->first();
+        if(isset($input['like'])) {
+            $likes = $villa->like + 1;
+
+            $villa->update([
+                'like' => $likes
+            ]);
+        }else{
+            $dislike = $villa->dislike + 1;
+
+            $villa->update([
+                'dislike' => $dislike
+            ]);
+        }
+
+        return back();
+    }
 }
