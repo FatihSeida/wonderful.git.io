@@ -8,7 +8,7 @@
         <div class="row">
             @foreach($wisatas as $key => $wisata)
             <div class="main_business">
-                <div class="col-md-4">
+                <div class="col-md-4" style="margin-bottom: 50px;">
                     <div class="busness_slid">
                         <div class="business_items text-center">
                             <div class="business_item">
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-8">
+                <div class="col-md-8" style="margin-bottom: 50px;">
                     <div class="business_item sm-m-top-50">
                         <h2 class="text-uppercase">{{ $wisata->name }}</h2>
                         <p class="m-top-20" style="text-align: justify;">{!! str_limit(strip_tags($wisata->desc), $limit = 200, $end = '...') !!}</p>
