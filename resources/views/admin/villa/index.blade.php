@@ -12,7 +12,7 @@
                 <div class="header">
                     <h1>
                         {{ $wisata->name }}
-                    </h1>
+                    </h1>s
                     <a href="{{ url('admin/'.$wisata->id.'/create') }}" class="btn btn-primary waves-effect">Tambah Villa</a>
                 </div>
                 <div class="body">
