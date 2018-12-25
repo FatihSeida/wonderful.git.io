@@ -197,9 +197,26 @@ class VillaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idWisata, $idVilla)
     {
-        //
+        $villa = Wisata::where('id', $idVilla)->first();
+
+        if (isset($villa->thumbnail)) {
+            unlink(public_path('images/villa/'.$villa->thumbnail));
+        }
+        if (isset($villa->photo1)) {
+            unlink(public_path('images/villa/'.$villa->photo1));
+        }
+        if (isset($villa->photo2)) {
+            unlink(public_path('images/villa/'.$villa->photo2));
+        }
+        if (isset($villa->photo3)) {
+            unlink(public_path('images/villa/'.$villa->photo3));
+        }
+
+        Villa::destroy($idVilla);
+
+        return back();
     }
 
     public function rating(Request $request, $id) {

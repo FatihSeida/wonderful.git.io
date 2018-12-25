@@ -41,10 +41,10 @@
                                     <td>
                                         <a href="{{ url('/'.$villa->wisata->slug.'/'.$villa->slug) }}" target="_blank" class="btn btn-info btn-xs waves-effect">View</a>
                                         <a href="{{ url('admin/'.$villa->wisata->id.'/'.$villa->id.'/edit') }}" class="btn btn-success btn-xs waves-effect">Edit</a>
-                                        <form action="{{ url('admin/wisata/'.$villa->id) }}" method="POST" style="display: inline;">
+                                        <form action="{{ url('admin/'.$villa->wisata->id.'/'.$villa->id) }}" method="POST" style="display: inline;">
                                             {{ csrf_field() }}
                                             {{ method_field('delete') }}
-                                            <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Apakah Anda Ingin Menghapus Wisata Ini ?');">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Apakah Anda Ingin Menghapus Villa Ini ?');">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
