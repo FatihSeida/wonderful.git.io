@@ -33,10 +33,14 @@
 				<h3>Harga Perhari : {{ $villa->price }}</h3>
 				<h4>Kontak : {{ $villa->hp }}</h4>
                     <div id="rating">
-                    	<form action="{{ url('rating/villa/'.$villa->id) }}" method="POST" id="like">{{ csrf_field() }}<input type="hidden" name="like" value="1"></form>
-                        <form action="{{ url('rating/villa/'.$villa->id) }}" method="POST" id="dislike">{{ csrf_field() }}<input type="hidden" name="dislike" value="1"></form>
+                    	@if (Route::has('login')) @auth <form action="{{ url('rating/villa/'.$villa->id) }}" method="POST" id="like">{{ csrf_field() }}<input type="hidden" name="like" value="1"></form>
+                        <form action="{{ url('rating/villa/'.$villa->id) }}" method="POST" id="dislike">{{ csrf_field() }}<input type="hidden" name="dislike" value="1"></form>@endauth @endif
                         <button type="submit" form="like" class="like btn btn-success" style="width: 49%; padding: 10px;"><i class="fa fa-thumbs-o-up"></i> Like <span class="likes">{{ $villa->like }}</span></button>
                         <button type="submit" form="dislike" class="dislike btn btn-danger" style="width: 49%; padding: 10px;"><i class="fa fa-thumbs-o-down"></i> Dislike <span class="dislikes">{{ $villa->dislike }}</span></button>
+                        <div class="alert alert-danger alert-dismissable" style="display: none;">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                Maaf, Anda Harus Login Terlebih Dahulu!
+                        </div>
                     </div>
 				</center>
 
@@ -64,22 +68,30 @@
 @section('script')
 	<script src="{{ url('assets/js/like-dislike.js') }}"></script>
 	<script type="text/javascript">
-	    $('#rating').likeDislike({
-	        initialValue: 0,
-	        reverseMode: true,
-	        click: function (value, l, d, event) {
-	            var likes = $(this.element).find('.likes');
-	            var dislikes = $(this.element).find('.dislikes');
+	    @if (Route::has('login')) @auth 
+        $('#rating').likeDislike({
+            initialValue: 0,
+            reverseMode: true,
+            click: function (value, l, d, event) {
+                var likes = $(this.element).find('.likes');
+                var dislikes = $(this.element).find('.dislikes');
 
-	            likes.text(parseInt(likes.text()) + l);
-	            dislikes.text(parseInt(dislikes.text()) + d);
+                likes.text(parseInt(likes.text()) + l);
+                dislikes.text(parseInt(dislikes.text()) + d);
 
-	            // $.ajax({
-	            //     url: '{{ url("rating/".$villa->slug) }}',
-	            //     type: 'POST',
-	            //     data: 'rating=' + likes,
-	            // });
-	        }
-	    });
+                // $.ajax({
+                //     url: '{{ url("rating/".$wisata->slug) }}',
+                //     type: 'POST',
+                //     data: 'rating=' + likes,
+                // });
+            }
+        });
+        @else 
+        $(document).ready(function(){
+            $('button').click(function(){
+                $('.alert').show()
+            }) 
+        });
+        @endauth @endif
 	</script>
 @endsection
