@@ -109,7 +109,7 @@
 						        @auth
                                     <li class="dropdown magz-dropdown"><a href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ url('/admin') }}"><i class="icon ion-person"></i> Dashboard</a></li>
+                                        @if(Auth::user()->role == 'admin')<li><a href="{{ url('/admin') }}"><i class="icon ion-person"></i> Dashboard</a></li>@endif
                                         
                                         <li><a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
