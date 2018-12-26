@@ -12,7 +12,7 @@
                             <h3 style="color: white;">{{ $favourite->name }}</h3>
                             <a href="{{ url($favourite->slug) }}" class="btn btn-success" style="padding: 10px;" target="_blank">Description</a>
                           </div>
-                          <img src="{{ url('images/wisata/'.$favourite->thumbnail) }}" style="min-height: 100%; min-width: 100%;" alt="...">
+                          <img src="{{ url('images/wisata/'.$favourite->thumbnail) }}" style="min-height: 50%; min-width: 100%;" alt="...">
                         </slide>
                         @endforeach
                         

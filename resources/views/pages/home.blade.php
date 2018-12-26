@@ -4,7 +4,7 @@
 
 @include('partials.carousel')
 <!--Business Section-->
-<section id="business" class="business bg-grey roomy-40">
+<section id="business" class="business bg-grey roomy-100">
     <div class="container">
     <center><h1 style="margin-top: -30px;">Wisata Lainnya</h1></center><br><br>
         <div class="row">
