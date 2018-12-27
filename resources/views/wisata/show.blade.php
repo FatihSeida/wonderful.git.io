@@ -33,8 +33,8 @@
                     <div id="rating">
                     	@if (Route::has('login')) @auth <form action="{{ url('rating/'.$wisata->id) }}" method="POST" id="like">{{ csrf_field() }}<input type="hidden" name="like" value="1"></form>
                         <form action="{{ url('rating/'.$wisata->id) }}" method="POST" id="dislike">{{ csrf_field() }}<input type="hidden" name="dislike" value="1"></form>@endauth @endif
-                        <button type="submit" form="like" class="like btn btn-success" style="width: 49%; padding: 10px;"><i class="fa fa-thumbs-o-up"></i> Like <span class="likes">{{ $wisata->like }}</span></button>
-                        <button type="submit" form="dislike" class="dislike btn btn-danger" style="width: 49%; padding: 10px;"><i class="fa fa-thumbs-o-down"></i> Dislike <span class="dislikes">{{ $wisata->dislike }}</span></button>
+                        <button type="submit" form="like" class="like btn btn-success" style="width: 49%; padding: 10px;" @if(isset($rated)) disabled @endif><i class="fa fa-thumbs-o-up"></i> Like <span class="likes">{{ $wisata->like }}</span></button>
+                        <button type="submit" form="dislike" class="dislike btn btn-danger" style="width: 49%; padding: 10px;" @if(isset($rated)) disabled @endif><i class="fa fa-thumbs-o-down"></i> Dislike <span class="dislikes">{{ $wisata->dislike }}</span></button>
                         <div class="alert alert-danger alert-dismissable" style="display: none;">
 					    	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 					            Maaf, Anda Harus Login Terlebih Dahulu!

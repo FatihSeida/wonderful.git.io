@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Wisata;
 use App\Villa;
+use App\Rating;
+use Illuminate\Support\Facades\Auth;
 
 class VillaController extends Controller
 {
@@ -236,6 +238,11 @@ class VillaController extends Controller
                 'dislike' => $dislike
             ]);
         }
+
+        Rating::create([
+            'villa_id' => $id,
+            'user_id' => Auth::user()->id
+        ]);
 
         return back();
     }

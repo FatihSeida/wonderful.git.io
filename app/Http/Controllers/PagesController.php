@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Wisata;
 use App\Villa;
+use App\Rating;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -21,13 +23,15 @@ class PagesController extends Controller
 
     public function showWisata($slugWisata) {
     	$wisata = Wisata::where('slug', $slugWisata)->first();
+        $rated = Rating::where('wisata_id', $wisata->id)->where('user_id', Auth::user()->id)->first();
 
-    	return view('wisata.show', compact('wisata'));
+    	return view('wisata.show', compact('wisata', 'rated'));
     }
 
     public function showVilla($slugWisata, $slugVilla) {
         $villa = Villa::where('slug', $slugVilla)->first();
+        $rated = Rating::where('villa_id', $villa->id)->where('user_id', Auth::user()->id)->first();
 
-        return view('villa.show', compact('villa'));
+        return view('villa.show', compact('villa', 'rated'));
     }
 }

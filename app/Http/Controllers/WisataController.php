@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Wisata;
 use App\Masukan;
+use App\Rating;
+use Illuminate\Support\Facades\Auth;
 
 class WisataController extends Controller
 {
@@ -346,6 +348,11 @@ class WisataController extends Controller
                 'dislike' => $dislike
             ]);
         }
+
+        Rating::create([
+            'wisata_id' => $id,
+            'user_id' => Auth::user()->id
+        ]);
 
         return back();
     }
