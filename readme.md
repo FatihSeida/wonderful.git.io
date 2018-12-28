@@ -1,3 +1,15 @@
+## Tentang Pemandu Travel (Wonderful)
+
+Aplikasi ini dibuat bertujuan untuk memberikan pengalaman berjelajah yang mudah, karena dengan aplikasi ini pengguna akan dicarikan jalan menuju lokasi destinasi wisata. selain itu juga, pengguna akan dibuat tidak khawatir ketika datang ke tempat wisata, karena Aplikasi akan memberikan informasi tempat penginapan/villa disekitar wisata untuk tempat bermalam. 
+
+
+
+
+
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
